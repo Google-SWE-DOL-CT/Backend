@@ -41,6 +41,7 @@ const seedTables = async () => {
 
 // create relationship between models
 const matchSubFuntionToJobFunction = async () =>{
+  console.log("made it to match subfunctions")
   const [job1, job2, job3, job4, job5, job6] = await JobFunction.findAll();
   const subfunctions = await SubFunction.findAll();
   subfunctions.forEach(async (subtask)=>{
