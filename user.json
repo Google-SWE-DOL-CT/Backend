@@ -1,0 +1,126 @@
+{
+  "users": [
+    {
+      "firstName": "Quiyet",
+      "lastName": "Brul",
+      "githubUsername":"quiyetbrul",
+      "email": "qbrul0514@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/34882290?v=4"
+    },
+    {
+      "firstName": "CJ",
+      "lastName": "Garcia",
+      "githubUsername":"CJGarciaMusic",
+      "email": "cjgarciamusic@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/50566094?v=4",
+      "isAdmin": 3
+    },
+    {
+      "firstName": "Javier",
+      "lastName": "Montero",
+      "githubUsername":"monterojavier",
+      "email": "monterodotjavier@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/34133510?v=4"
+    },
+    {
+      "firstName": "Anderson",
+      "lastName": "Quinones",
+      "githubUsername":"Andersonquinones",
+      "email": "anderson.quinones10@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/32976024?v=4"
+    },
+    {
+      "firstName": "Eric",
+      "lastName": "Davenport, Jr.",
+      "githubUsername":"EricDavenport",
+      "email": "ericdavenport@pursuit.org",
+      "githubPic": "https://avatars.githubusercontent.com/u/55724749?v=4"
+    },
+    {
+      "firstName": "Denille",
+      "lastName": "Carrington",
+      "githubUsername":"CDenille",
+      "email": "carringtondenille@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/86806705?v=4"
+    },
+    {
+      "firstName": "Cesar",
+      "lastName": "Nina",
+      "githubUsername":"cesarsnina",
+      "email": "cesar.nina05@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/20484427?v=4"
+    },
+    {
+      "firstName": "Jonathan",
+      "lastName": "Ford",
+      "githubUsername":"jwford",
+      "email": "jonathanwford156@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/13416547?v=4"
+    },
+    {
+      "firstName": "Jorge",
+      "lastName": "Flores",
+      "githubUsername":"floresjmjr",
+      "email": "jorge.m.flores@protonmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/19786439?v=4"
+    },
+    {
+      "firstName": "Dinalisse",
+      "lastName": "Felicione",
+      "githubUsername":"Dee-bugg",
+      "email": "dfelicione@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/77699758?v=4",
+      "isAdmin": 3
+    },
+    {
+      "firstName": "Jazmin",
+      "lastName": "Matos",
+      "githubUsername":"jazminmatos",
+      "email": "jmatos1993@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/65051399?v=4"
+    },
+    {
+      "firstName": "Serge",
+      "lastName": "Nikiema",
+      "githubUsername":"sergethi",
+      "email": "nsergearistide@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/56887722?v=4"
+    },
+    {
+      "firstName": "Mamadou",
+      "lastName": "Diallo",
+      "githubUsername":"saliouprogress",
+      "email": "msd228@cornell.edu",
+      "githubPic": "https://avatars.githubusercontent.com/u/49839551?v=4"
+    },
+    {
+      "firstName": "Ranffi",
+      "lastName": "Ramirez",
+      "githubUsername":"Ranffi",
+      "email": "ranffiramirez@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/65202373?v=4"
+    },
+    {
+      "firstName": "Lucas",
+      "lastName": "Freitas",
+      "githubUsername":"",
+      "email": "lucasfreitas0101@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/32626445?v=4"
+    },
+    {
+      "firstName": "Danny",
+      "lastName": "Reina",
+      "githubUsername":"LuFrei",
+      "email": "dannyflatiron@gmail.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/57384174?v=4"
+    },
+    {
+      "firstName": "Michael",
+      "lastName": "DunnOConnor",
+      "githubUsername":"dunnoconnor",
+      "email": "admin@email.com",
+      "githubPic": "https://avatars.githubusercontent.com/u/37776449?v=4",
+      "isAdmin": 1
+    }
+  ]
+}

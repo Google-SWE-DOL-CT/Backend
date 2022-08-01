@@ -8,14 +8,14 @@ const {User, JobFunction, SubFunction, UserJob, AdminAction} = require('./db/mod
 
 // define our seed function
 const seedTables = async () => {
-  console.log("yoooooooooooooooo!")
   // find the path to our json file
   // const userSeedPath = path.join(__dirname, './json/user.json');
   // const jobSeedPath = path.join(__dirname, './json/jobFunctions.json');
   // const subFunctionPath = path.join(__dirname, './json/subFunction.json');
   // const userJobSeedPath = path.join(__dirname, './json/userSubFunction.json');
-
-  const userSeedPath = './json/user.json';
+  
+  console.log("yoooooooooooooooo!")
+  const userSeedPath = 'user.json';
   const jobSeedPath = './json/jobFunctions.json';
   const subFunctionPath = './json/subFunction.json';
 
@@ -89,7 +89,7 @@ const createAdminActions = async ()=>{
 
 const seed = async ()=>{
   await db.sync({force: true});
-  await seedTables(),
+  // await seedTables(),
   await matchSubFuntionToJobFunction(),
   await createUserJobs();
   setTimeout(async ()=>{
