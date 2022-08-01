@@ -106,5 +106,3 @@ dist
 *.sqlite
 
 .env
-
-json

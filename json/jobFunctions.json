@@ -1,0 +1,34 @@
+{
+  "jobFunctions": [
+    {
+      "title": "Job Function 1",
+      "description": "Plan a set of software development requirements to estimate personal time and effort required to deliver a piece of work and enable accurate costs to be established",
+      "id": 1
+    },
+    {
+      "title": "Job Function 2",
+      "description": "Analyze and convert customer requirements into technical requirements, both functional and non-functional to ensure that customers' expectations are accurately reflected in the software products developed.",
+      "id": 2
+    },
+    {
+      "title": "Job Function 3",
+      "description": "Identify and design the most appropriate technical solution, taking into consideration coding best practice and appropriate quality standards.",
+      "id": 3
+    },
+    {
+      "title": "Job Function 4",
+      "description": "Write and implement a logical and maintainable software solution to meet the design and organizational coding standards",
+      "id": 4
+    },
+    {
+      "title": "Job Function 5",
+      "description": "Perform testing of the software solution to ensure a high quality output and deploy a suitably documented solution to the customer for their use",
+      "id": 5
+    },
+    {
+      "title": "Job Function 6",
+      "description": "Respond appropriately to given Service Level Agreements (SLA) to ensure that time and resources invested in software development activity are allocated appropriately to maintain good customer service.",
+      "id": 6
+    }
+  ]
+}

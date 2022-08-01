@@ -15,7 +15,7 @@ const seedTables = async () => {
   // const userJobSeedPath = path.join(__dirname, './json/userSubFunction.json');
   
   console.log("USER JSON!")
-  const userSeedPath = './user.json';
+  const userSeedPath = './json/user.json';
   const jobSeedPath = './json/jobFunctions.json';
   const subFunctionPath = './json/subFunction.json';
 
