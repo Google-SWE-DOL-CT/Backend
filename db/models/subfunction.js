@@ -8,7 +8,7 @@ SubFunction.init(
     {
       subId: DataTypes.FLOAT,
       papperId: DataTypes.STRING,
-      outcomes: DataTypes.STRING,
+      outcomes: DataTypes.STRING(5000),
       job_subFunction: DataTypes.INTEGER,
     },
     {
