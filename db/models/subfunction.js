@@ -9,7 +9,7 @@ SubFunction.init(
       subId: DataTypes.FLOAT,
       papperId: DataTypes.STRING,
       outcomes: DataTypes.STRING,
-      job_subFunction: DataTypes.NUMBER,
+      job_subFunction: DataTypes.INTEGER,
     },
     {
       sequelize: db,

@@ -11,8 +11,8 @@ AdminAction.init({
     defaultValue: 2,
   },
   comments: DataTypes.STRING,
-  onJobPractice: DataTypes.NUMBER,
-  mvPractice: DataTypes.NUMBER,
+  onJobPractice: DataTypes.INTEGER,
+  mvPractice: DataTypes.INTEGER,
 
 }, {
   sequelize: db,

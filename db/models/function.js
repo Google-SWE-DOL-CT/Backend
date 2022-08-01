@@ -9,7 +9,7 @@ JobFunction.init(
       title: DataTypes.STRING,
       description: DataTypes.STRING,
       id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
       },
     },
