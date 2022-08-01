@@ -14,8 +14,8 @@ const seedTables = async () => {
   // const subFunctionPath = path.join(__dirname, './json/subFunction.json');
   // const userJobSeedPath = path.join(__dirname, './json/userSubFunction.json');
   
-  console.log("yoooooooooooooooo!")
-  const userSeedPath = 'user.json';
+  console.log("USER JSON!")
+  const userSeedPath = './user.json';
   const jobSeedPath = './json/jobFunctions.json';
   const subFunctionPath = './json/subFunction.json';
 
@@ -41,7 +41,6 @@ const seedTables = async () => {
 
 // create relationship between models
 const matchSubFuntionToJobFunction = async () =>{
-  console.log("made it to match subfunctions")
   const [job1, job2, job3, job4, job5, job6] = await JobFunction.findAll();
   const subfunctions = await SubFunction.findAll();
   subfunctions.forEach(async (subtask)=>{
@@ -90,7 +89,7 @@ const createAdminActions = async ()=>{
 
 const seed = async ()=>{
   await db.sync({force: true});
-  // await seedTables(),
+  await seedTables(),
   await matchSubFuntionToJobFunction(),
   await createUserJobs();
   setTimeout(async ()=>{
