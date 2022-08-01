@@ -7,10 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "startdev": "nodemon index.js",
     "seed": "node seed.js",
-    "client":"cd dol-swe-comp && npm start",
-    "install-client": "cd dol-swe-comp && npm install --force",
-    "build": "cd dol-swe-comp && npm install --force && npm run build --prod",
-    "heroku-postbuild":"npm run install-client &&  npm run build",
     "start": "node index.js"
   },
   "engines": {
