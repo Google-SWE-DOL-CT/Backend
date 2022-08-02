@@ -40,7 +40,8 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 router.get('/github', (req, res)=>{
-  const redirect_uri = `http://localhost:${process.env.PORT}/api/login/github/callback`;
+  const redirect_uri = `${process.env.DEPLOYED_ROUTE}/api/login/github/callback`;
+  // const redirect_uri = `http://localhost:${process.env.PORT}/api/login/github/callback`;
   res.redirect(`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`);
 });
 
