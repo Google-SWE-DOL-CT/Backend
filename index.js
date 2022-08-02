@@ -5,7 +5,7 @@ const express = require('express');
 require('dotenv').config();
 const cookieParser = require('cookie-parser')
 
-// const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 module.exports = app;
 
@@ -16,7 +16,7 @@ const createApp = () => {
 
   app.use('/api', require('./api'));
 
-  // app.use(express.static(path.join(__dirname, './dol-swe-comp/dist/dol-swe-comp')));
+  app.use(express.static(path.join(__dirname, './dol-swe-comp/dist/dol-swe-comp')));
 
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
@@ -28,9 +28,9 @@ const createApp = () => {
     }
   });
 
-  // app.use('*', (req, res) => {
-  //   res.sendFile(path.join(__dirname, './dol-swe-comp/dist/dol-swe-comp/index.html'));
-  // });
+  app.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './dol-swe-comp/dist/dol-swe-comp/index.html'));
+  });
 
   app.use((err, req, res, next) => {
     console.error(err);
@@ -45,10 +45,10 @@ app.get('/', (req, res)=>{
 
 // start listening (and create a 'server' object representing our server)
 const startListening = () => {
-  // app.listen(PORT, () =>
-  //   console.log(`Successfully procrastinating on port ${PORT}`),
-  // );
-  app.listen(process.env.DEPLOYED_ROUTE, () => console.log(`Successfully deployed on ${process.env.DEPLOYED_ROUTE}`))
+  app.listen(PORT, () =>
+    console.log(`Successfully procrastinating on port ${PORT}`),
+  );
+  // app.listen(process.env.DEPLOYED_ROUTE, () => console.log(`Successfully deployed on ${process.env.DEPLOYED_ROUTE}`))
 };
 
 async function bootApp() {
