@@ -19,7 +19,7 @@ const createApp = () => {
   app.use(express.static(path.join(__dirname, '..', 'public')));
 
   app.use(cors({
-    origin: 'https://serene-inlet-74805.herokuapp.com/',
+    origin: 'https://serene-inlet-74805.herokuapp.com/api',
     credentials: true,
   }));
 
