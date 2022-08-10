@@ -4,6 +4,7 @@ const path = require('path');
 const express = require('express');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -38,6 +39,14 @@ const createApp = () => {
     console.error(err.stack);
     res.status(err.status || 500).send(err.message || 'Internal server error.');
   });
+
+  app.set('trust proxy', 1),
+  app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {secure: true},
+  }));
 };
 
 app.get('/', (req, res)=>{
