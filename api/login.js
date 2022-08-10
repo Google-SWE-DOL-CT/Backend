@@ -81,17 +81,17 @@ router.get('/github/callback', async (req, res)=>{
     };
     const opts = {headers: {accept: 'application/json'}};
     const response = await axios.post(`https://github.com/login/oauth/access_token`, body, opts);
-    console.log('this is the response:', response.data);
+    // console.log('this is the response:', response.data);
 
     const user = await fetchGithubUser(response.data.access_token);
-    console.log('this is the user:', user);
+    // console.log('this is the user:', user);
 
     const currentUser = await User.findOne({where: {githubUsername: {[Op.like]: user.data.login}}});
     console.log('Current User: ' + currentUser.id);
 
     if (currentUser) {
       const token = await User.authenticate(currentUser.githubUsername);
-
+      console.log(res)
       res.cookie('jwt', token, {secure: true})
       if (currentUser.isAdmin == 0) {
         res.redirect(`http://localhost:4200/users/${currentUser.id}`);
