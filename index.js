@@ -4,7 +4,6 @@ const path = require('path');
 const express = require('express');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -18,11 +17,6 @@ const createApp = () => {
   app.use('/api', require('./api'));
 
   app.use(express.static(path.join(__dirname, '..', 'public')));
-
-  app.use(cors({
-    origin: 'https://serene-inlet-74805.herokuapp.com/api',
-    credentials: true,
-  }));
 
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
