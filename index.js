@@ -3,7 +3,7 @@
 const path = require('path');
 const express = require('express');
 require('dotenv').config();
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -12,11 +12,16 @@ module.exports = app;
 const createApp = () => {
   app.use(express.json());
   app.use(express.urlencoded({extended: true}));
-  app.use(cookieParser())
+  app.use(cookieParser());
 
   app.use('/api', require('./api'));
 
   app.use(express.static(path.join(__dirname, '..', 'public')));
+
+  app.use(cors({
+    origin: 'https://serene-inlet-74805.herokuapp.com/',
+    credentials: true,
+  }));
 
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
