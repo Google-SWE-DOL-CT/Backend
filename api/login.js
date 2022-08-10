@@ -91,7 +91,7 @@ router.get('/github/callback', async (req, res)=>{
 
     if (currentUser) {
       const token = await User.authenticate(currentUser.githubUsername);
-      localStorage.setItem('jwt', token);
+      window.localStorage.setItem('jwt', token);
       // res.cookie('jwt', token, {secure: true})
 
       if (currentUser.isAdmin == 0) {
