@@ -93,13 +93,12 @@ router.get('/github/callback', async (req, res)=>{
       const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
       // res.cookie('jwt', token, {secure: true})
-      res.set({'Authorization': token});
-      res.header('Authorization', token);
-      if (currentUser.isAdmin == 0) {
-        res.redirect(`http://localhost:4200/users/${currentUser.id}`);
-      } else {
-        res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
-      }
+      res.send({'jwt': token});
+      // if (currentUser.isAdmin == 0) {
+      //   res.redirect(`http://localhost:4200/users/${currentUser.id}`);
+      // } else {
+      //   res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
+      // }
     } else {
       res.redirect('http://localhost:4200/');
     }
