@@ -93,12 +93,19 @@ router.get('/github/callback', async (req, res)=>{
       const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
       // res.cookie('jwt', token, {secure: true})
-      res.send({'jwt': token});
-      // if (currentUser.isAdmin == 0) {
-      //   res.redirect(`http://localhost:4200/users/${currentUser.id}`);
-      // } else {
-      //   res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
-      // }
+      // res.send({'jwt': token});
+
+      res.cookie('jwt', token, {
+        maxAge: new Date() * 0.001 + 300,
+        domain: 'https://serene-inlet-74805.herokuapp.com/',
+        secure: true,
+        sameSite: 'none',
+      });
+      if (currentUser.isAdmin == 0) {
+        res.redirect(`http://localhost:4200/users/${currentUser.id}`);
+      } else {
+        res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
+      }
     } else {
       res.redirect('http://localhost:4200/');
     }
