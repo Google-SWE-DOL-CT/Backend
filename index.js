@@ -16,7 +16,7 @@ const createApp = () => {
 
   app.use('/api', require('./api'));
 
-  app.use(express.static(path.join(__dirname, './dol-swe-comp/dist/dol-swe-comp')));
+  app.use(express.static(path.join(__dirname, '..', 'public')));
 
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
@@ -29,7 +29,8 @@ const createApp = () => {
   });
 
   app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './dol-swe-comp/dist/dol-swe-comp/index.html'));
+    // res.sendFile(path.join(__dirname, './dol-swe-comp/dist/dol-swe-comp/index.html'));
+    res.sendFile(path.join(__dirname, '..', 'public/index.html'));
   });
 
   app.use((err, req, res, next) => {
