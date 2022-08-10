@@ -91,9 +91,9 @@ router.get('/github/callback', async (req, res)=>{
 
     if (currentUser) {
       const token = await User.authenticate(currentUser.githubUsername);
-      window.localStorage.setItem('jwt', token);
+      // window.localStorage.setItem('jwt', token);
       // res.cookie('jwt', token, {secure: true})
-
+      res.send({'jwt': token});
       if (currentUser.isAdmin == 0) {
         res.redirect(`http://localhost:4200/users/${currentUser.id}`);
       } else {
