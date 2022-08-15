@@ -91,7 +91,8 @@ async function fetchGithubUser(token) {
   return await request;
 }
  async function sendJwt(user){
-  await axios.post(`${process.env.DEPLOYED_ROUTE}/login/token`,{user})
+  const request = await axios.post(`${process.env.DEPLOYED_ROUTE}/login/token`,{user}) 
+  return await request
  }
 
 router.get('/github/callback', async (req, res)=>{
@@ -116,6 +117,7 @@ router.get('/github/callback', async (req, res)=>{
       await sendJwt(currentUser.githubUsername)
       // window.localStorage.setItem('jwt', token);
       res.cookie('jwt', token, {secure: true});
+      res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
 
       const session = req.session;
@@ -126,13 +128,13 @@ router.get('/github/callback', async (req, res)=>{
       //   secure: true,
       //   sameSite: 'none',
       // });
-      if (currentUser.isAdmin == 0) {
-        res.redirect(`http://localhost:4200/users/${currentUser.id}`);
-      } else {
-        res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
-      }
-    } else {
-      res.redirect('http://localhost:4200/');
+    //   if (currentUser.isAdmin == 0) {
+    //     res.redirect(`http://localhost:4200/users/${currentUser.id}`);
+    //   } else {
+    //     res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
+    //   }
+    // } else {
+    //   res.redirect('http://localhost:4200/');
     }
   } catch (error) {
     console.log(error);
