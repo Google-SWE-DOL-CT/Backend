@@ -66,7 +66,7 @@ router.get('/github', (req, res)=>{
 router.post('/token', async (req, res, next)=>{
   try {
     console.log("TOKEN PSOT HIT")
-    res.send({token: await User.authenticate(req.body.user)})
+    res.send({token: await User.authenticate(req.body.user),coms:"this got hit"})
   } catch (ex) {
     next(ex)
     
