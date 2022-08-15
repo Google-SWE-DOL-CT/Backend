@@ -76,7 +76,7 @@ router.post('/token', async (req, res, next)=>{
 router.get('/token', async (req, res, next)=>{
   try {
     console.log("HERES THE REQ", req.cookies)
-    res.send({jwt: req.cookies.jwt})
+    res.send(req.cookies.jwt)
     
   } catch (ex) {
     next(ex)
