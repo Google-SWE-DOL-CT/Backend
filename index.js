@@ -40,7 +40,6 @@ const createApp = () => {
     res.status(err.status || 500).send(err.message || 'Internal server error.');
   });
 
-  app.set('trust proxy', 1),
   app.use(session({
     secret: process.env.SECRET_KEY,
     resave: false,

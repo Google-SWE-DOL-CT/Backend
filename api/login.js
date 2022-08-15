@@ -34,7 +34,7 @@ router.post('/', async (req, res)=>{
 });
 
 // github OAuth
-
+ https://serene-inlet-74805.herokuapp.com/api/login/github/callback
 // should be in .env
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
@@ -75,7 +75,7 @@ router.post('/token', async (req, res, next)=>{
 
 router.get('/token', async (req, res, next)=>{
   try {
-    res.send(await User.findByToken(req.headers.authorization))
+    res.send("in the get token route")
     
   } catch (ex) {
     next(ex)
@@ -113,8 +113,7 @@ router.get('/github/callback', async (req, res)=>{
     console.log('Current User: ' + currentUser.id);
 
     if (currentUser) {
-      // const token = await User.authenticate(currentUser.githubUsername);
-      await sendJwt(currentUser.githubUsername)
+       const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
       res.cookie('jwt', token, {secure: true});
       res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
