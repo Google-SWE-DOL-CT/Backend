@@ -34,7 +34,7 @@ router.post('/', async (req, res)=>{
 });
 
 // github OAuth
- https://serene-inlet-74805.herokuapp.com/api/login/github/callback
+
 // should be in .env
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
