@@ -63,6 +63,25 @@ router.get('/github', (req, res)=>{
 //         const params = new URLSearchParams(text);
 //         return params.get("access_token");
 // }
+router.post('/token', async (req, res, next)=>{
+  try {
+    console.log("TOKEN PSOT HIT")
+    res.send({token: await User.authenticate(req.body)})
+  } catch (ex) {
+    next(ex)
+    
+  }
+})
+
+router.get('/token', async (req, res, next)=>{
+  try {
+    res.send(await User.findByToken(req.headers.authorization))
+    
+  } catch (ex) {
+    next(ex)
+    
+  }
+})
 async function fetchGithubUser(token) {
   const request = await axios.get('https://api.github.com/user', {
     headers: {
@@ -71,6 +90,9 @@ async function fetchGithubUser(token) {
   });
   return await request;
 }
+ async function sendJwt(user){
+  await axios.post(`${process.env.DEPLOYED_ROUTE}/login/token`,{user})
+ }
 
 router.get('/github/callback', async (req, res)=>{
   try {
@@ -90,7 +112,8 @@ router.get('/github/callback', async (req, res)=>{
     console.log('Current User: ' + currentUser.id);
 
     if (currentUser) {
-      const token = await User.authenticate(currentUser.githubUsername);
+      // const token = await User.authenticate(currentUser.githubUsername);
+      await sendJwt(currentUser.githubUsername)
       // window.localStorage.setItem('jwt', token);
       res.cookie('jwt', token, {secure: true});
       // res.send({'jwt': token});
