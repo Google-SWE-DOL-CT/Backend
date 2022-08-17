@@ -64,7 +64,7 @@ router.get('/github', (req, res)=>{
 //         return params.get("access_token");
 // }
 
-router.get('/getsession', function(req, res) {
+router.get('/getsession', async (req, res)=> {
   console.log(`Session ID: ${req.session.token}`);
   res.status(200).json({sessiontoken: req.session.token});
 });
