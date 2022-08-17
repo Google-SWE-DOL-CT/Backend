@@ -21,7 +21,16 @@ const createApp = () => {
   app.use(express.json());
   app.use(express.urlencoded({extended: true}));
   app.use(cookieParser());
+  
+  app.use(session({
+    name: "TOKENNNNN",
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true,
+    store: myStore
+  }));
 
+  myStore.sync()
   app.use('/api', require('./api'));
 
   app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -47,16 +56,6 @@ const createApp = () => {
     res.status(err.status || 500).send(err.message || 'Internal server error.');
   });
 
-  app.use(session({
-    name: "TOKENNNNN",
-    secret: process.env.SECRET_KEY,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {secure: true},
-    store: myStore
-  }));
-
-  myStore.sync()
 };
 
 app.get('/', (req, res)=>{
