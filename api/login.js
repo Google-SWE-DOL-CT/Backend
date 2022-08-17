@@ -7,7 +7,6 @@ const axios = require('axios');
 require('dotenv').config();
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-const session = require('express-session');
 
 
 const {User} = require('../db/models');
@@ -128,13 +127,13 @@ router.get('/github/callback', async (req, res)=>{
        const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
       res.cookie('jwt', token, {secure: true});
-      session = req.session;
+      req.session.token = token;
       //session.Cookie = token;
       
       //res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
       
-      console.log('Session', session);
+      console.log('Session', req.session);
       //await fetchJWT(token)
       // res.cookie('jwt', token, {
       //   maxAge: new Date() * 0.001 + 300,
