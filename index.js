@@ -5,6 +5,13 @@ const express = require('express');
 require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const db = require('./db/db');
+
+const SequelizeStore = require("connect-session-sequelize")(session.Store)
+const myStore = new SequelizeStore ({
+  db: db,
+  tableName : 'sessions'
+})
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -46,7 +53,10 @@ const createApp = () => {
     resave: false,
     saveUninitialized: true,
     cookie: {secure: true},
+    store: myStore
   }));
+
+  myStore.sync()
 };
 
 app.get('/', (req, res)=>{
