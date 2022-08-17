@@ -131,7 +131,7 @@ router.get('/github/callback', async (req, res)=>{
       console.log('in the if');
       const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
-      res.cookie('jwt', token, {secure: true});
+      // res.cookie('jwt', token, {secure: true});
       req.session.token = token;
       // session.Cookie = token;
 
@@ -139,18 +139,19 @@ router.get('/github/callback', async (req, res)=>{
       // res.send({'jwt': token});
       req.session.save();
       console.log('Session', req.session);
-      await fetchJWT(token);
+      // await fetchJWT(token);
       // res.cookie('jwt', token, {
       //   maxAge: new Date() * 0.001 + 300,
       //   domain: 'https://serene-inlet-74805.herokuapp.com/',
       //   secure: true,
       //   sameSite: 'none',
       // });
-      if (currentUser.isAdmin == 0) {
-        res.redirect(`http://localhost:4200/users/${currentUser.id}`);
-      } else {
-        res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
-      }
+      // if (currentUser.isAdmin == 0) {
+      //   res.redirect(`http://localhost:4200/users/${currentUser.id}`);
+      // } else {
+      //   res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
+      // }
+      res.redirect(`${process.env.DEPLOYED_ROUTE}/login/getsession`);
     } else {
       res.redirect('http://localhost:4200/');
     }
