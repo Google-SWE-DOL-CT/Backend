@@ -65,24 +65,22 @@ router.get('/github', (req, res)=>{
 // }
 router.post('/token', async (req, res, next)=>{
   try {
-    console.log("TOKEN PSOT HIT")
-    res.send({token: await User.authenticate(req.body.user),coms:"this got hit"})
+    console.log('TOKEN PSOT HIT');
+    res.send({token: await User.authenticate(req.body.user), coms: 'this got hit'});
   } catch (ex) {
-    next(ex)
-    
+    next(ex);
   }
-})
+});
 
 router.get('/token', async (req, res, next)=>{
   try {
-    console.log("HERES THE REQ")
-    res.send(await User.findByToken(req.headers.authorization))
-    
+    console.log('HERES THE REQ');
+    // res.send(await User.findByToken(req.headers.authorization))
+    res.send(req.session.token);
   } catch (ex) {
-    next(ex)
-    
+    next(ex);
   }
-})
+});
 async function fetchGithubUser(token) {
   const request = await axios.get('https://api.github.com/user', {
     headers: {
@@ -100,10 +98,10 @@ async function fetchJWT(token) {
   });
   return await request;
 }
- async function sendJwt(user){
-  const request = await axios.post(`${process.env.DEPLOYED_ROUTE}/login/token`,{user}) 
-  return await request
- }
+async function sendJwt(user) {
+  const request = await axios.post(`${process.env.DEPLOYED_ROUTE}/login/token`, {user});
+  return await request;
+}
 
 router.get('/github/callback', async (req, res)=>{
   try {
@@ -123,18 +121,18 @@ router.get('/github/callback', async (req, res)=>{
     console.log('Current User: ' + currentUser.id);
 
     if (currentUser) {
-      console.log("in the if")
-       const token = await User.authenticate(currentUser.githubUsername);
+      console.log('in the if');
+      const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
       res.cookie('jwt', token, {secure: true});
       req.session.token = token;
-      //session.Cookie = token;
-      
-      //res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
+      // session.Cookie = token;
+
+      // res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
-      req.session.save()
+      req.session.save();
       console.log('Session', req.session);
-      //await fetchJWT(token)
+      await fetchJWT(token);
       // res.cookie('jwt', token, {
       //   maxAge: new Date() * 0.001 + 300,
       //   domain: 'https://serene-inlet-74805.herokuapp.com/',
