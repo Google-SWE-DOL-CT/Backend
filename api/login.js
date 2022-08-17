@@ -128,11 +128,11 @@ router.get('/github/callback', async (req, res)=>{
       // window.localStorage.setItem('jwt', token);
       res.cookie('jwt', token, {secure: true});
       await fetchJWT(token)
+      const session = req.session;
       
-      res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
+      //res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
 
-      const session = req.session;
       console.log('Session', session);
       // res.cookie('jwt', token, {
       //   maxAge: new Date() * 0.001 + 300,
@@ -140,13 +140,13 @@ router.get('/github/callback', async (req, res)=>{
       //   secure: true,
       //   sameSite: 'none',
       // });
-    //   if (currentUser.isAdmin == 0) {
-    //     res.redirect(`http://localhost:4200/users/${currentUser.id}`);
-    //   } else {
-    //     res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
-    //   }
-    // } else {
-    //   res.redirect('http://localhost:4200/');
+      if (currentUser.isAdmin == 0) {
+        res.redirect(`http://localhost:4200/users/${currentUser.id}`);
+      } else {
+        res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
+      }
+    } else {
+      res.redirect('http://localhost:4200/');
     }
   } catch (error) {
     console.log(error);
