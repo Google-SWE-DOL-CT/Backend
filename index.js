@@ -6,12 +6,13 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const {db} = require('./db/db');
+const cors = require('cors');
 
-const SequelizeStore = require("connect-session-sequelize")(session.Store)
-const myStore = new SequelizeStore ({
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const myStore = new SequelizeStore({
   db: db,
-  tableName : 'sessions'
-})
+  tableName: 'sessions',
+});
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -21,16 +22,20 @@ const createApp = () => {
   app.use(express.json());
   app.use(express.urlencoded({extended: true}));
   app.use(cookieParser());
-  
+
+  app.use(cors({
+    credentials: true,
+  }));
+
   app.use(session({
-    name: "TOKENNNNN",
+    name: 'TOKENNNNN',
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    store: myStore
+    store: myStore,
   }));
 
-  myStore.sync()
+  myStore.sync();
   app.use('/api', require('./api'));
 
   app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -55,7 +60,6 @@ const createApp = () => {
     console.error(err.stack);
     res.status(err.status || 500).send(err.message || 'Internal server error.');
   });
-
 };
 
 app.get('/', (req, res)=>{
