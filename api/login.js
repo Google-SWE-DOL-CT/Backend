@@ -92,9 +92,12 @@ async function fetchGithubUser(token) {
   return await request;
 }
 
-async function fetchJWT() {
-  const request = await axios.get(`${process.env.DEPLOYED_ROUTE}/login/token`
-  );
+async function fetchJWT(token) {
+  const request = await axios.get(`${process.env.DEPLOYED_ROUTE}/login/token`, {
+    headers: {
+      Authorization: 'token ' + token,
+    },
+  });
   return await request;
 }
  async function sendJwt(user){
@@ -124,7 +127,7 @@ router.get('/github/callback', async (req, res)=>{
        const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
       res.cookie('jwt', token, {secure: true});
-      await fetchJWT()
+      await fetchJWT(token)
       
       //res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
