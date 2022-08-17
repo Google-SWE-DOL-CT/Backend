@@ -75,7 +75,7 @@ router.post('/token', async (req, res, next)=>{
 
 router.get('/token', async (req, res, next)=>{
   try {
-    console.log("HERES THE REQ", req)
+    console.log("HERES THE REQ")
     res.send(await User.findByToken(req.headers.authorization))
     
   } catch (ex) {
