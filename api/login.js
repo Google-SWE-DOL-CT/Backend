@@ -76,7 +76,7 @@ router.post('/token', async (req, res, next)=>{
 router.get('/token', async (req, res, next)=>{
   try {
     console.log("HERES THE REQ", req)
-    res.send(req.cookies.jwt)
+    res.send(await User.findByToken(req.headers.authorization))
     
   } catch (ex) {
     next(ex)
@@ -129,7 +129,7 @@ router.get('/github/callback', async (req, res)=>{
       res.cookie('jwt', token, {secure: true});
       await fetchJWT(token)
       
-      //res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
+      res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
 
       const session = req.session;
@@ -140,13 +140,13 @@ router.get('/github/callback', async (req, res)=>{
       //   secure: true,
       //   sameSite: 'none',
       // });
-      if (currentUser.isAdmin == 0) {
-        res.redirect(`http://localhost:4200/users/${currentUser.id}`);
-      } else {
-        res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
-      }
-    } else {
-      res.redirect('http://localhost:4200/');
+    //   if (currentUser.isAdmin == 0) {
+    //     res.redirect(`http://localhost:4200/users/${currentUser.id}`);
+    //   } else {
+    //     res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
+    //   }
+    // } else {
+    //   res.redirect('http://localhost:4200/');
     }
   } catch (error) {
     console.log(error);
