@@ -91,6 +91,12 @@ async function fetchGithubUser(token) {
   });
   return await request;
 }
+
+async function fetchJWT() {
+  const request = await axios.get('https://api.github.com/user', {
+  });
+  return await request;
+}
  async function sendJwt(user){
   const request = await axios.post(`${process.env.DEPLOYED_ROUTE}/login/token`,{user}) 
   return await request
@@ -117,24 +123,26 @@ router.get('/github/callback', async (req, res)=>{
        const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
       res.cookie('jwt', token, {secure: true});
-      res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
+      sendJwt()
+      
+      //res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
 
       const session = req.session;
       console.log('Session', session);
-      // res.cookie('jwt', token, {
-      //   maxAge: new Date() * 0.001 + 300,
-      //   domain: 'https://serene-inlet-74805.herokuapp.com/',
-      //   secure: true,
-      //   sameSite: 'none',
-      // });
-    //   if (currentUser.isAdmin == 0) {
-    //     res.redirect(`http://localhost:4200/users/${currentUser.id}`);
-    //   } else {
-    //     res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
-    //   }
-    // } else {
-    //   res.redirect('http://localhost:4200/');
+      res.cookie('jwt', token, {
+        maxAge: new Date() * 0.001 + 300,
+        domain: 'https://serene-inlet-74805.herokuapp.com/',
+        secure: true,
+        sameSite: 'none',
+      });
+      if (currentUser.isAdmin == 0) {
+        res.redirect(`http://localhost:4200/users/${currentUser.id}`);
+      } else {
+        res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
+      }
+    } else {
+      res.redirect('http://localhost:4200/');
     }
   } catch (error) {
     console.log(error);
