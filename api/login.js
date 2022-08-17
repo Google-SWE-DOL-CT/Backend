@@ -63,6 +63,12 @@ router.get('/github', (req, res)=>{
 //         const params = new URLSearchParams(text);
 //         return params.get("access_token");
 // }
+
+router.get('/getsession', function(req, res) {
+  console.log(`Session ID: ${req.session.token}`);
+  res.status(200).json({sessiontoken: req.session.token});
+});
+
 router.post('/token', async (req, res, next)=>{
   try {
     console.log('TOKEN PSOT HIT');
@@ -81,6 +87,7 @@ router.get('/token', async (req, res, next)=>{
     next(ex);
   }
 });
+
 async function fetchGithubUser(token) {
   const request = await axios.get('https://api.github.com/user', {
     headers: {
