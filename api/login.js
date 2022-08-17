@@ -128,6 +128,7 @@ router.get('/github/callback', async (req, res)=>{
       // window.localStorage.setItem('jwt', token);
       res.cookie('jwt', token, {secure: true});
       const session = req.session;
+      session.cookie = token;
       
       //res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
