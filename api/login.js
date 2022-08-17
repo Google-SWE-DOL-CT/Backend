@@ -151,7 +151,8 @@ router.get('/github/callback', async (req, res)=>{
       // } else {
       //   res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
       // }
-      res.redirect(`${process.env.DEPLOYED_ROUTE}/login/getsession`);
+      res.redirect('http://localhost:4200/users');
+      // res.redirect(`${process.env.DEPLOYED_ROUTE}/login/getsession`);
     } else {
       res.redirect('http://localhost:4200/');
     }

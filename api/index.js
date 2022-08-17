@@ -37,7 +37,7 @@ router.use(function(req, res, next) {
 // });
 
 // These already begin the routes so in dog and user files you don't need to begin with /users for example
-router.use('/users', require('./users'), requireToken);
+router.use('/users', require('./users'));
 router.use('/jobFunctions', require('./jobFunctions'), requireToken);
 router.use('/login', require('./login'));
 router.use('/admin', require('./admin'), requireToken, isAdmin);
