@@ -123,7 +123,7 @@ router.get('/github/callback', async (req, res)=>{
        const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
       res.cookie('jwt', token, {secure: true});
-      fetchJWT()
+      await fetchJWT()
       
       //res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
