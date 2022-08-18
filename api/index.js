@@ -19,9 +19,10 @@ router.use(function(req, res, next) {
   next();
 });
 
-// router.use(cors({
-//   credentials: true,
-// }));
+router.use(cors({
+  credentials: true,
+  origin: 'http://localhost:4200'
+}));
 
 // router.get('/token', async (req, res) => {
 //   const options = {method: 'POST',

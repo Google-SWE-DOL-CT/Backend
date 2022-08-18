@@ -24,7 +24,7 @@ const createApp = () => {
   app.use(cookieParser());
 
   app.use(cors({
-    credentials: true,
+    credentials: true, origin:'http://localhost:4200'
   }));
 
   app.use(session({
