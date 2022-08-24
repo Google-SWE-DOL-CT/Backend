@@ -65,8 +65,8 @@ router.get('/github', (req, res)=>{
 // }
 
 router.get('/getsession', async (req, res)=> {
-  console.log(`Session ID: ${req.session.token}`);
-  res.status(200).json({sessiontoken: req.session.token});
+  console.log(`Session ID: ${req.session}`);
+  res.status(200).json({sessiontoken: req.session});
 });
 
 router.post('/token', async (req, res, next)=>{
