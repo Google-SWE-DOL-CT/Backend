@@ -118,6 +118,7 @@ router.get('/github/callback', async (req, res)=>{
       client_secret: CLIENT_SECRET,
       code: req.query.code,
     };
+    console.log('BODYODY:', body);
     const opts = {headers: {accept: 'application/json'}};
     const response = await axios.post(`https://github.com/login/oauth/access_token`, body, opts);
     // console.log('this is the response:', response.data);
@@ -132,12 +133,12 @@ router.get('/github/callback', async (req, res)=>{
       console.log('in the if');
       const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
-      res.cookie('jwt', token, {
-        sameSite : "none",
-        secure: true,
-        domain: "http://localhost:4200",
-        httpOnly: true
-        });
+      // res.cookie('jwt', token, {
+      //   sameSite : "none",
+      //   secure: true,
+      //   domain: "http://localhost:4200",
+      //   httpOnly: true
+      //   });
       req.session.token = token;
       // session.Cookie = token;
 
