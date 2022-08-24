@@ -65,8 +65,9 @@ router.get('/github', (req, res)=>{
 // }
 
 router.get('/getsession', async (req, res)=> {
+  const info = await myStore.findOne({where: {sessionID:req.sessionID}})
   console.log(`Session ID: ${req.sessionID}`);
-  res.status(200).json({sessiontoken: req.sessionID});
+  res.status(200).json(info);
 });
 
 router.post('/token', async (req, res, next)=>{
@@ -131,7 +132,12 @@ router.get('/github/callback', async (req, res)=>{
       console.log('in the if');
       const token = await User.authenticate(currentUser.githubUsername);
       // window.localStorage.setItem('jwt', token);
-      // res.cookie('jwt', token, {secure: true});
+      res.cookie('jwt', token, {
+        sameSite : "none",
+        secure: true,
+        domain: "http://localhost:4200",
+        httpOnly: true
+        });
       req.session.token = token;
       // session.Cookie = token;
 
