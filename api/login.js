@@ -64,11 +64,11 @@ router.get('/github', (req, res)=>{
 //         return params.get("access_token");
 // }
 
-router.get('/getsession', async (req, res)=> {
-  const info = await myStore.findOne({where: {sessionID:req.sessionID}})
-  console.log(`Session ID: ${req.sessionID}`);
-  res.status(200).json(info);
-});
+// router.get('/getsession', async (req, res)=> {
+//   const info = await myStore.findOne({where: {sessionID:req.sessionID}})
+//   console.log(`Session ID: ${req.sessionID}`);
+//   res.status(200).json(info);
+// });
 
 router.post('/token', async (req, res, next)=>{
   try {
