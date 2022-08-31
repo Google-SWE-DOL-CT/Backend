@@ -19,6 +19,7 @@ const app = express();
 module.exports = app;
 
 const createApp = () => {
+  app.set("trust proxy", 1)
   app.use(express.json());
   app.use(express.urlencoded({extended: true}));
   app.use(cookieParser());
@@ -32,7 +33,7 @@ const createApp = () => {
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    cookie: {secure: false},
+    cookie: {secure: 'http://localhost:4200', sameSite:"none"},
     store: myStore,
   }));
 
