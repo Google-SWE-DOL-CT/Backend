@@ -138,12 +138,12 @@ router.get('/github/callback', async (req, res)=>{
         domain: "http://localhost:4200",
         httpOnly: true
         });
-      req.session.token = token;
+      //req.session.token = token;
       // session.Cookie = token;
 
       // res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
-      req.session.save();
+      //req.session.save();
       console.log('Session', req.session);
       // await fetchJWT(token);
       // res.cookie('jwt', token, {
