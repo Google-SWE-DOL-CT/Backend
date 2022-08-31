@@ -133,18 +133,18 @@ router.get('/github/callback', async (req, res)=>{
       console.log('in the if');
       const token = await User.authenticate(currentUser.githubUsername);
       res.cookie('jwt', token, {
-        sameSite : "none",
+        sameSite: 'none',
         secure: true,
-        domain: "http://localhost:4200",
-        httpOnly: true
-        });
-      //req.session.token = token;
+        domain: 'http://localhost:4200',
+        httpOnly: true,
+      });
+      // req.session.token = token;
       // session.Cookie = token;
 
       // res.redirect(`${process.env.DEPLOYED_ROUTE}/login/token`)
       // res.send({'jwt': token});
-      //req.session.save();
-      //console.log('Session', req.session);
+      // req.session.save();
+      // console.log('Session', req.session);
       // await fetchJWT(token);
       // res.cookie('jwt', token, {
       //   maxAge: new Date() * 0.001 + 300,
