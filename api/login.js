@@ -152,12 +152,12 @@ router.get('/github/callback', async (req, res)=>{
       //   secure: true,
       //   sameSite: 'none',
       // });
-      // if (currentUser.isAdmin == 0) {
-      //   res.redirect(`http://localhost:4200/users/${currentUser.id}`);
-      // } else {
-      //   res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
-      // }
-      res.redirect('http://localhost:4200/users');
+      if (currentUser.isAdmin == 0) {
+        res.redirect(`http://localhost:4200/users/${currentUser.id}`);
+      } else {
+        res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
+      }
+      // res.redirect('http://localhost:4200/users');
       // res.redirect(`${process.env.DEPLOYED_ROUTE}/login/getsession`);
     } else {
       res.redirect('http://localhost:4200/');
