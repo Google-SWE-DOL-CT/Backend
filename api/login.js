@@ -132,13 +132,13 @@ router.get('/github/callback', async (req, res)=>{
     if (currentUser) {
       console.log('in the if');
       const token = await User.authenticate(currentUser.githubUsername);
-      // window.localStorage.setItem('jwt', token);
-      // res.cookie('jwt', token, {
-      //   sameSite : "none",
-      //   secure: true,
-      //   domain: "http://localhost:4200",
-      //   httpOnly: true
-      //   });
+      window.localStorage.setItem('jwt', token);
+      res.cookie('jwt', token, {
+        sameSite : "none",
+        secure: true,
+        domain: "http://localhost:4200",
+        httpOnly: true
+        });
       req.session.token = token;
       // session.Cookie = token;
 
