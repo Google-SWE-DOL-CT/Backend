@@ -28,14 +28,14 @@ const createApp = () => {
     credentials: true, origin:'http://localhost:4200'
   }));
 
-  app.use(session({
-    name: 'TOKENNNNN',
-    secret: process.env.SECRET_KEY,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {secure: 'http://localhost:4200', sameSite:"none"},
-    store: myStore,
-  }));
+  // app.use(session({
+  //   name: 'TOKENNNNN',
+  //   secret: process.env.SECRET_KEY,
+  //   resave: false,
+  //   saveUninitialized: true,
+  //   cookie: {secure: 'http://localhost:4200', sameSite:"none"},
+  //   store: myStore,
+  // }));
 
   myStore.sync();
   app.use('/api', require('./api'));
