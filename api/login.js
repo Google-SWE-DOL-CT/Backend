@@ -154,14 +154,14 @@ router.get('/github/callback', async (req, res)=>{
       //   sameSite: 'none',
       // });
       if (currentUser.isAdmin == 0) {
-        res.redirect(`${FE_DEPLOYED_URL}/users/${currentUser.id}`);
+        res.redirect(`https://gswe-dol-tracker2.herokuapp.com/users/${currentUser.id}`);
       } else {
-        res.redirect(`${FE_DEPLOYED_URL}/users/${currentUser.id}/admin-dashboard`);
+        res.redirect(`https://gswe-dol-tracker2.herokuapp.com/users/${currentUser.id}/admin-dashboard`);
       }
       // res.redirect('http://localhost:4200/users');
       // res.redirect(`${process.env.DEPLOYED_ROUTE}/login/getsession`);
     } else {
-      res.redirect(`${FE_DEPLOYED_URL}`);
+      res.redirect(`https://gswe-dol-tracker2.herokuapp.com`);
     }
   } catch (error) {
     console.log(error);
