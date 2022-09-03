@@ -34,6 +34,7 @@ router.post('/', async (req, res)=>{
 });
 
 // github OAuth
+const FE_DEPLOYED_URL =  'https://gswe-dol-tracker2.herokuapp.com'
 // should be in .env
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
@@ -153,14 +154,14 @@ router.get('/github/callback', async (req, res)=>{
       //   sameSite: 'none',
       // });
       if (currentUser.isAdmin == 0) {
-        res.redirect(`http://localhost:4200/users/${currentUser.id}`);
+        res.redirect(`${FE_DEPLOYED_URL}/users/${currentUser.id}`);
       } else {
-        res.redirect(`http://localhost:4200/users/${currentUser.id}/admin-dashboard`);
+        res.redirect(`${FE_DEPLOYED_URL}/users/${currentUser.id}/admin-dashboard`);
       }
       // res.redirect('http://localhost:4200/users');
       // res.redirect(`${process.env.DEPLOYED_ROUTE}/login/getsession`);
     } else {
-      res.redirect('http://localhost:4200/');
+      res.redirect(`${FE_DEPLOYED_URL}`);
     }
   } catch (error) {
     console.log(error);
