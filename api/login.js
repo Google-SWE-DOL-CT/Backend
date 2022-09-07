@@ -34,7 +34,7 @@ router.post('/', async (req, res)=>{
 });
 
 // github OAuth
-const FE_DEPLOYED_URL =  'https://gswe-dol-tracker2.herokuapp.com'
+const FE_DEPLOYED_URL = 'https://gswe-dol-tracker2.herokuapp.com';
 // should be in .env
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
