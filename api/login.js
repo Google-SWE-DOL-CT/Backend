@@ -138,7 +138,6 @@ router.get('/github/callback', async (req, res)=>{
         domain: 'https://gswe-dol-tracker.herokuapp.com',
         httpOnly: true,
       });
-      
       // req.session.token = token;
       // session.Cookie = token;
 
