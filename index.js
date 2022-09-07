@@ -25,7 +25,7 @@ const createApp = () => {
   app.use(cookieParser());
 
   app.use(cors({
-    credentials: true, origin:'http://localhost:4200'
+    credentials: true, origin:'https://gswe-dol-tracker.herokuapp.com'
   }));
 
   // app.use(session({

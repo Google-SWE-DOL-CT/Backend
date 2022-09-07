@@ -135,7 +135,7 @@ router.get('/github/callback', async (req, res)=>{
       res.cookie('jwt', token, {
         sameSite: 'none',
         secure: true,
-        domain: 'http://localhost:4200',
+        domain: 'https://gswe-dol-tracker.herokuapp.com',
         httpOnly: true,
       });
       
