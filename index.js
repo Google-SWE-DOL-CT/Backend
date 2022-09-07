@@ -19,13 +19,13 @@ const app = express();
 module.exports = app;
 
 const createApp = () => {
-  app.set("trust proxy", 1)
+  app.set('trust proxy', 1);
   app.use(express.json());
   app.use(express.urlencoded({extended: true}));
   app.use(cookieParser());
 
   app.use(cors({
-    credentials: true, origin:'https://gswe-dol-tracker.herokuapp.com'
+    credentials: true, origin: 'https://gswe-dol-tracker.herokuapp.com',
   }));
 
   // app.use(session({
